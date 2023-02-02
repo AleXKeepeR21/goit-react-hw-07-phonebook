@@ -3,7 +3,7 @@ import {
   addContact,
   deleteContact,
   fetchContacts,
-  toggleCompleted,
+  // toggleCompleted,
 } from './operations';
 
 const handlePending = state => {
@@ -47,16 +47,6 @@ export const contactSlice = createSlice({
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
-    [toggleCompleted.pending]: handlePending,
-    [toggleCompleted.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.items.splice(index, 1, action.payload);
-    },
-    [toggleCompleted.rejected]: handleRejected,
   },
 });
 
