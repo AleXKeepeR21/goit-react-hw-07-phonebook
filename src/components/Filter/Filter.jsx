@@ -1,12 +1,13 @@
 import css from '../Filter/Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setQuery } from 'features/Contacts/Contact.slice';
+import { setFilter } from 'redux/Filter.slice';
+import { getFilter } from 'redux/selector';
 
 export function Filter() {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(getFilter);
   const onQueryChanged = query => {
-    dispatch(setQuery(query));
+    dispatch(setFilter(query));
   };
 
   return (
